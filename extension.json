@@ -1,5 +1,5 @@
 {
-	"name": "IsekaiTextExtracts",
+	"name": "TextExtracts",
 	"author": [
 		"Max Semenik",
 		"hyperzlib"
@@ -21,7 +21,7 @@
 		}
 	},
 	"MessagesDirs": {
-		"IsekaiTextExtracts": [
+		"TextExtracts": [
 			"i18n",
 			"i18n/api"
 		]

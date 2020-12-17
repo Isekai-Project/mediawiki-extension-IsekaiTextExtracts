@@ -6,7 +6,7 @@ use DOMXPath;
 
 class IntroSectionSearcher {
     private $headerTag = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-    private $ignoreTag = ['#comment'];
+    private $allowedTag = ['p', 'ul', 'ol', 'li', 'span', '#text'];
     /** @var DOMDocument $dom */
     private $dom;
 
@@ -37,7 +37,7 @@ class IntroSectionSearcher {
                     //如果有内容，遇到下一个标题就退出
                     return;
                 }
-            } elseif(!in_array($childNode->nodeName, $this->ignoreTag)) {
+            } elseif(in_array($childNode->nodeName, $this->allowedTag)) {
                 if(!empty(trim($childNode->textContent))) {
                     $this->introDom->appendChild($this->introDom->importNode($childNode, true));
                     if(!$inContent) $inContent = true;
