@@ -88,9 +88,11 @@ class TextTruncator {
 		// This ungreedy pattern always matches, just might return an empty string
 		$pattern = '/^[\w\/]*>?/su';
 		preg_match( $pattern, mb_substr( $text, $requestedLength ), $m );
-		$text = mb_substr( $text, 0, $requestedLength ) . $m[0];
+		if(!empty($m)){
+			$text = mb_substr( $text, 0, $requestedLength ) . $m[0];
+		}
 
-		return $this->tidy( $text ) . $this->msg( 'ellipsis' )->text();
+		return $this->tidy( $text ) . wfMessage( 'ellipsis' )->text();
 	}
 
 	/**
